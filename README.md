@@ -338,8 +338,6 @@ anime-api/
 
 ├── .env.example                            # Environment example file
 
-├── .env.testing                            # Testing environment file
-
 ├── README.md                               # Project documentation
 
 └── composer.json                           # PHP dependencies
