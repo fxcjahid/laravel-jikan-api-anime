@@ -10,6 +10,7 @@ class Anime extends Model
         'mal_id',
         'titles',
         'slugs',
+        'images',
         'synopsis',
         'type',
         'episodes',
@@ -19,11 +20,14 @@ class Anime extends Model
         'status',
         'aired_from',
         'aired_to',
+        'response',
     ];
 
     protected $casts = [
-        'titles'     => 'array',
-        'slugs'      => 'array',
+        'titles'     => 'json',
+        'slugs'      => 'json',
+        'images'     => 'json',
+        'response'   => 'json',
         'aired_from' => 'date',
         'aired_to'   => 'date',
     ];

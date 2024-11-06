@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('status')->nullable();
             $table->date('aired_from')->nullable();
             $table->date('aired_to')->nullable();
+            $table->json('response')->nullable();
             $table->timestamps();
         });
     }

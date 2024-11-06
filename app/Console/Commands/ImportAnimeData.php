@@ -35,7 +35,7 @@ class ImportAnimeData extends Command
              * Jikan API has a pagination limit of 25 items per page
              */
 
-            $pages     = 4; // 4 pages × 25 items = 100 anime
+            $pages     = 1; // 4 pages × 25 items = 100 anime
             $processed = 0;
 
             for ($page = 1; $page <= $pages; $page++) {
@@ -49,7 +49,7 @@ class ImportAnimeData extends Command
 
                 $response = Http::get("https://api.jikan.moe/v4/top/anime", [
                     'page'  => $page,
-                    'limit' => 25,
+                    'limit' => 5,
                 ]);
 
                 if (! $response->successful()) {
@@ -74,6 +74,7 @@ class ImportAnimeData extends Command
                         [
                             'titles'     => $titles,
                             'slugs'      => $slugs,
+                            'images'     => $animeData['images'],
                             'synopsis'   => $animeData['synopsis'],
                             'type'       => $animeData['type'],
                             'episodes'   => $animeData['episodes'],
@@ -83,6 +84,7 @@ class ImportAnimeData extends Command
                             'status'     => $animeData['status'],
                             'aired_from' => $animeData['aired']['from'],
                             'aired_to'   => $animeData['aired']['to'],
+                            'response'   => $animeData,
                         ],
                     );
 
