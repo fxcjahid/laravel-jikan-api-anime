@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->unsignedInteger('mal_id')->unique();
             $table->json('titles');
             $table->json('slugs');
+            $table->json('images');
             $table->text('synopsis')->nullable();
             $table->string('type')->nullable();
             $table->integer('episodes')->nullable();
