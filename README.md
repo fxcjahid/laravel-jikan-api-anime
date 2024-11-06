@@ -2,38 +2,38 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-  - [Data Import](#data-import)
-  - [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-- [Error Handling](#error-handling)
-- [Rate Limiting](#rate-limiting)
-- [Database Structure](#database-structure)
+-   [Overview](#overview)
+-   [Requirements](#requirements)
+-   [Installation](#installation)
+-   [Configuration](#configuration)
+-   [Usage](#usage)
+    -   [Data Import](#data-import)
+    -   [API Endpoints](#api-endpoints)
+-   [Testing](#testing)
+-   [Error Handling](#error-handling)
+-   [Rate Limiting](#rate-limiting)
+-   [Database Structure](#database-structure)
 
 ## Overview
 
-This project is a Laravel-based API that fetches and manages anime data from the Jikan API (Unofficial MyAnimeList API). It provides endpoints to access anime information in both Polish and English languages, with proper slug handling and data validation.
+This project is a Laravel-based API that fetches and manages anime data from the Jikan API. It provides endpoints to access anime information in both Polish and English languages, with proper slug handling and data validation.
 
 ### Key Features
 
-- Fetches top 100 anime from Jikan API
-- Stores data in MySQL with language-specific slugs
-- RESTful API endpoints with proper error handling
-- Rate limiting for Jikan API requests
-- Comprehensive search and filtering capabilities
-- Language support (PL/EN)
+-   Fetches top 100 anime from Jikan API
+-   Stores data in MySQL with language-specific slugs
+-   RESTful API endpoints with proper error handling
+-   Rate limiting for Jikan API requests
+-   Comprehensive search and filtering capabilities
+-   Language support (PL/EN)
 
 ## Requirements
 
-- PHP 8.1 or higher
-- MySQL 5.7 or higher
-- Composer
-- Laravel 10.x
-- Node.js & NPM (for frontend assets)
+-   PHP 8.1 or higher
+-   MySQL 5.7 or higher
+-   Composer
+-   Laravel 10.x
+-   Node.js & NPM (for frontend assets)
 
 ## Installation
 
@@ -106,7 +106,7 @@ php artisan anime:import
 
 Options:
 
-- `--force`: Force import even if recently run
+-   `--force`: Force import even if recently run
 
 ```bash
 php artisan anime:import --force
@@ -114,10 +114,10 @@ php artisan anime:import --force
 
 The import command will:
 
-- Fetch top 100 anime from Jikan API
-- Create slugs for both languages
-- Store data in the database
-- Handle rate limiting automatically
+-   Fetch top 100 anime from Jikan API
+-   Create slugs for both languages
+-   Store data in the database
+-   Handle rate limiting automatically
 
 ### API Endpoints
 
@@ -129,8 +129,8 @@ GET http://127.0.0.1:8000/api/anime/{slug}?lang={lang}
 
 Parameters:
 
-- `slug`: Anime slug in the appropriate language
-- `lang`: Language code (pl/en)
+-   `slug`: Anime slug in the appropriate language
+-   `lang`: Language code (pl/en)
 
 Example requests:
 
@@ -183,11 +183,11 @@ GET http://127.0.0.1:8000/api/anime/non-existent-anime?lang=en
 
 The API uses proper HTTP status codes:
 
-- 200: Successful request
-- 404: Anime not found or wrong language
-- 422: Invalid parameters
-- 429: Too many requests (rate limit)
-- 500: Server error
+-   200: Successful request
+-   404: Anime not found or wrong language
+-   422: Invalid parameters
+-   429: Too many requests (rate limit)
+-   500: Server error
 
 Error Response Format:
 
@@ -351,46 +351,46 @@ anime-api/
 
 ### App Directory
 
-- **Commands**: Contains the anime import command
-- **Exceptions**: Custom exception handling
-- **Http/Controllers**: Web and API controllers
-- **Http/Requests**: Request validation classes
-- **Http/Resources**: API resource transformers
-- **Services**: External service integrations
+-   **Commands**: Contains the anime import command
+-   **Exceptions**: Custom exception handling
+-   **Http/Controllers**: Web and API controllers
+-   **Http/Requests**: Request validation classes
+-   **Http/Resources**: API resource transformers
+-   **Services**: External service integrations
 
 ### Database Directory
 
-- **Migrations**: Database structure definitions
+-   **Migrations**: Database structure definitions
 
 ### Resources Directory
 
-- **Views**: Blade templates for web interface
+-   **Views**: Blade templates for web interface
 
 ### Routes Directory
 
-- **api.php**: API endpoint definitions
-- **web.php**: Web route definitions
+-   **api.php**: API endpoint definitions
+-   **web.php**: Web route definitions
 
 ### Tests Directory
 
-- **Feature**: Integration tests
-- **Unit**: Unit tests for individual components
+-   **Feature**: Integration tests
+-   **Unit**: Unit tests for individual components
 
 ## File Purposes
 
 ### Core Files
 
-- `ImportAnimeData.php`: Handles fetching and storing anime data
-- `JikanApiService.php`: Manages communication with external API
-- `AnimeController.php`: Handles web and API requests
-- `Anime.php`: Defines database model and relationships
+-   `ImportAnimeData.php`: Handles fetching and storing anime data
+-   `JikanApiService.php`: Manages communication with external API
+-   `AnimeController.php`: Handles web and API requests
+-   `Anime.php`: Defines database model and relationships
 
 ### View Files
 
-- `index.blade.php`: Lists all anime entries
-- `show.blade.php`: Shows detailed anime information
+-   `index.blade.php`: Lists all anime entries
+-   `show.blade.php`: Shows detailed anime information
 
 ### Configuration Files
 
-- `.env.example`: Template for environment configuration
-- `README.md`: Project documentation
+-   `.env.example`: Template for environment configuration
+-   `README.md`: Project documentation
