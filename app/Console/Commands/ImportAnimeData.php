@@ -29,10 +29,15 @@ class ImportAnimeData extends Command
 
     /**
      * Jikan API Service Provider
+     *
      * @var JikanApiService $jikanService
      */
     private $jikanService;
 
+    /**
+     * Initialize jikan service
+     * @param \App\Services\JikanApiService $jikanService
+     */
     public function __construct(JikanApiService $jikanService)
     {
         parent::__construct();
@@ -41,8 +46,9 @@ class ImportAnimeData extends Command
 
     /**
      * Execute the console command.
+     * @return boolean|int
      */
-    public function handle()
+    public function handle() : int
     {
         if (! $this->shouldRun()) {
             $this->warn('Import was recently run. Use --force to override.');
@@ -63,24 +69,34 @@ class ImportAnimeData extends Command
 
             return 0;
         } catch (JikanApiException $e) {
+
             DB::rollBack();
             $this->error("Jikan API Error: " . $e->getMessage());
+
             Log::error('Anime Import Failed - Jikan API Error', [
                 'message'     => $e->getMessage(),
                 'status_code' => $e->getStatusCode(),
             ]);
+
             return 1;
         } catch (\Exception $e) {
+
             DB::rollBack();
             $this->error("An unexpected error occurred: " . $e->getMessage());
+
             Log::error('Anime Import Failed - Unexpected Error', [
                 'message' => $e->getMessage(),
                 'trace'   => $e->getTraceAsString(),
             ]);
+
             return 1;
         }
     }
 
+    /**
+     * Checking availity for run command
+     * @return bool
+     */
     private function shouldRun() : bool
     {
         if ($this->option('force')) {
@@ -88,9 +104,14 @@ class ImportAnimeData extends Command
         }
 
         $lastRun = Cache::get('last_anime_import');
+
         return ! $lastRun || $lastRun->addHours(12)->isPast();
     }
 
+    /**
+     * Insert data from API to database
+     * @return int
+     */
     private function importAnimeData() : int
     {
         $processed = 0;

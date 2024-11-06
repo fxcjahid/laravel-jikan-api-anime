@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Anime extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'mal_id',
         'titles',
@@ -23,6 +28,11 @@ class Anime extends Model
         'response',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array $casts
+     */
     protected $casts = [
         'titles'     => 'json',
         'slugs'      => 'json',
