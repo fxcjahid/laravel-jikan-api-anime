@@ -5,14 +5,13 @@
 -   [Overview](#overview)
 -   [Requirements](#requirements)
 -   [Installation](#installation)
--   [Configuration](#configuration)
 -   [Usage](#usage)
     -   [Data Import](#data-import)
-    -   [API Endpoints](#api-endpoints)
--   [Testing](#testing)
+    -   [API Endpoints](#api-endpoints) 
 -   [Error Handling](#error-handling)
 -   [Rate Limiting](#rate-limiting)
 -   [Database Structure](#database-structure)
+-   [File Structure](#project-file-structure-map)
 
 ## Overview
 
@@ -338,8 +337,6 @@ anime-api/
 │
 
 ├── .env.example                            # Environment example file
-
-├── .env.testing                            # Testing environment file
 
 ├── README.md                               # Project documentation
 
